@@ -85,5 +85,5 @@ const has5yearsExp = skill => skill.yrsExperience >= 5;
  */
 const hasStrongSkills = student => student.skills.filter(has5yearsExp).length > 0;
 const candidates = students.filter(hasStrongSkills);
-const candidateNames = candidates.map(candidate => [candidate.name]) // Logs maps only acceptable candidate names
+const candidateNames = candidates.map(candidate => [candidate.name]) // maps only acceptable candidate names
 console.log(candidateNames);
