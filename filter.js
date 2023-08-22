@@ -21,6 +21,14 @@ const people = [
   },
 ];
 
+const oldEnough = people.filter(person => person.age >= 21);
+console.log(oldEnough);
+
+// Filtering just 'Paul' from the people array
+const paul = people.filter(p => p.name === 'Paul')[0]; // 0 index gets object only
+console.log(paul);
+
+
 
 // Complex Filtering
 const students = [
@@ -55,3 +63,27 @@ const students = [
     ]
   },
 ];
+
+// filtering the inner skills array to only those skills with at least five years of experience.
+
+
+// Complex filter
+// const candidates = students.filter(student => {
+//   let strongSkills = student.skills.filter(skill => skill.yrsExperience >= 5)
+//   return strongSkills.length > 0;
+// });
+
+// console.log(candidates);
+
+
+// Cleaner example
+const has5yearsExp = skill => skill.yrsExperience >= 5;
+/**
+ * In the case of Ariel, this will just return an empty  array, since none of her skills pass the test.
+ * to return a true or false result for the original filter, we return whether strongSkills.length is 
+ * greater than zero.
+ */
+const hasStrongSkills = student => student.skills.filter(has5yearsExp).length > 0;
+const candidates = students.filter(hasStrongSkills);
+const candidateNames = candidates.map(candidate => [candidate.name]) // Logs maps only acceptable candidate names
+console.log(candidateNames);
